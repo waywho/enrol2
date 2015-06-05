@@ -7,6 +7,21 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<br />
+
+<ul class="nav nav-tabs">
+  <li role="presentation" class="active"><a href="#">Home</a></li>
+  <li role="presentation"><a href="#">Profile</a></li>
+  <li role="presentation"><a href="#">Messages</a></li>
+</ul>
+
+<% if notice.present? %>
+<p class="notice"><%= notice %></p>
+<% end %>
+
+<% if alert.present? %>
+<p class="alert"><%= alert %></p>
+<% end %>
 
 <%= yield %>
 

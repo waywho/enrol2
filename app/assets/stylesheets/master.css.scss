@@ -5,7 +5,11 @@ body {
 
 .home-page {
 	background: #fff;
-	position: absolute;
-	height: 90%;
+	position: relative;
+	min-height: 550px;
 	border-radius: 5px;
+}
+
+.nav {
+	background: url('45degreee_fabric.png');
 }

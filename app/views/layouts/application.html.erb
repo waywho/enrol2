@@ -10,7 +10,6 @@
 <br />
 
 <div class = 'col-xs-offset-2 col-xs-8'>
-		<br />
 	<ul class="nav nav-tabs">
 	  <li role="presentation" class="<%= 'active' if params[:controller] == 'static_pages' %>"><%= link_to 'Home', root_path %></li>
 	  <li role="presentation" class="<%= 'active' if params[:controller] == 'courses' %>"><%= link_to 'Courses', courses_path %></li>
@@ -19,6 +18,7 @@
 	</ul>
 </div>
 <div class = 'home-page col-xs-offset-2 col-xs-8'>
+	<br />
 	<% if notice.present? %>
 	<p class="notice"><%= notice %></p>
 	<% end %>

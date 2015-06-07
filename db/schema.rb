@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150606200222) do
+ActiveRecord::Schema.define(version: 20150606202428) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -74,6 +74,16 @@ ActiveRecord::Schema.define(version: 20150606200222) do
 
   add_index "enrollments", ["session_id"], name: "index_enrollments_on_session_id", using: :btree
   add_index "enrollments", ["user_id", "session_id"], name: "index_enrollments_on_user_id_and_session_id", using: :btree
+
+  create_table "line_items", force: true do |t|
+    t.integer  "session_id"
+    t.integer  "cart_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "line_items", ["cart_id"], name: "index_line_items_on_cart_id", using: :btree
+  add_index "line_items", ["session_id"], name: "index_line_items_on_session_id", using: :btree
 
   create_table "sessions", force: true do |t|
     t.date     "date"

@@ -1,10 +1,6 @@
-<% if notice %>
-<p id="notice"><%= notice %></p>
-<% end %>
-
 <h2>Your Cart</h2>
 <ul>
 	<% @cart.line_items.each do |item| %>
-		<li><%= item.session.date %></li>
+		<li>session: <%= item.session.date %>, <%= item.session.from.strftime("from %H:%M") %> <%= item.session.to.strftime("to %H:%M") %>, <%= item.session.address %>, <%= item.session.postal_code %></li>
 	<% end %>
 </ul>

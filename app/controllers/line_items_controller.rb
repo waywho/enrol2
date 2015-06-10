@@ -18,7 +18,7 @@ class LineItemsController < InheritedResources::Base
 
 	def create
 		session = Session.find(params[:session_id])
-		@line_item = @cart.line_items.build(session_id: session)
+		@line_item = @cart.line_items.build(session: session)
 
 		# flash[:notice] = "Added #{session.date} to cart."
 

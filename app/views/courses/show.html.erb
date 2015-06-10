@@ -3,6 +3,6 @@
 <% @course.sessions.each do |session| %>
 <p><%= session.date.strftime("%a, %d %b, %Y") %>, <%= session.from.strftime("from %H:%M") %> <%= session.to.strftime("to %H:%M") %>, pianist: <%= session.instructor %><br>
 	<%= session.address %>, <%= session.postal_code %>
-	<%= button_to 'Attend', line_items_path(session_id: session), :class => 'btn btn-success' %></p>
+	<%= button_to 'Attend', line_items_path(:session_id => session), :class => 'btn btn-success' %></p>
 
 <% end %>

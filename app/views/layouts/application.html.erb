@@ -13,7 +13,7 @@
 	<ul class="nav nav-tabs">
 	  <li role="presentation" class="<%= 'active' if params[:controller] == 'static_pages' %>"><%= link_to 'Home', root_path %></li>
 	  <li role="presentation" class="<%= 'active' if params[:controller] == 'courses' %>"><%= link_to 'Courses', courses_path %></li>
-	  <li role="presentation" class="<%= 'active' if params[:controller] == 'carts' %>"><%= link_to 'Cart', cart_path(:id) %></li>
+	  <li role="presentation" class="<%= 'active' if params[:controller] == 'carts' %>"><%= link_to 'Cart', cart_path(@cart) %></li>
 	  <li role="presentation" class="<%= 'active' if params[:controller] == 'devise/sessions' %>"><%= link_to 'Sign In', new_user_session_path %></li>
 	  <li role="presentation" class="<%= 'active' if params[:controller] == 'devise/registrations' %>"><%= link_to 'Sign Up', new_user_registration_path %></li>
 	</ul>

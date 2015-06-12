@@ -18,30 +18,31 @@ class LineItemsController < InheritedResources::Base
 
 	def create
 		session = Session.find(params[:session_id])
-		@line_item = @cart.line_items.build(session: session)
+		@line_item = @cart.line_items.create(session: session)
 
-		# flash[:notice] = "Added #{session.date} to cart."
+		flash[:notice] = "Added #{session.date} to cart."
 
-		# render :action => :index
+		redirect_to course_path(session.course_id)
 
-		respond_to do |format|
-			if @line_item.save
-				format.html { redirect_to @line_item.cart,
-					notice: 'Line item was successfully created.' }
-				format.json { render action: 'show',
-					status: :created, location: @line_item }
-			else
-				format.html { render action: 'new' }
-				format.json { render json: @line_item.errors,
-					status: :unprocessable_entity }
-			end
-		end
+		# respond_to do |format|
+		# 	if @line_item.save
+		# 		format.html { redirect_to @line_item.cart,
+		# 			notice: 'Line item was successfully created.' }
+		# 		format.json { render action: 'show',
+		# 			status: :created, location: @line_item }
+		# 	else
+		# 		format.html { render action: 'new' }
+		# 		format.json { render json: @line_item.errors,
+		# 			status: :unprocessable_entity }
+		# 	end
+		# end
 	end
 
 	def update
 	end
 
 	def destroy
+
 	end
 
   private

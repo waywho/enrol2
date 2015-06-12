@@ -9,7 +9,7 @@ ActiveAdmin.register Session do
 		column :postal_code
 		column :cost
 		column :user_id
-		default_actions
+		actions
 	end
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters

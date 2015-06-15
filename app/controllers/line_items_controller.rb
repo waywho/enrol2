@@ -1,5 +1,6 @@
 class LineItemsController < InheritedResources::Base
 	include CurrentCart
+	before_action :authenticate_user!
 	before_action :set_cart, only: [:create]
 	before_action :set_line_item, only: [:show, :eidt, :update, :destroy]
 

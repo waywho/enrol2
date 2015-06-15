@@ -1,8 +1,14 @@
-<%= @course.title %>
-<p>
-<% @course.sessions.each do |session| %>
-<p><%= session.date.strftime("%a, %d %b, %Y") %>, <%= session.from.strftime("from %H:%M") %> <%= session.to.strftime("to %H:%M") %>, pianist: <%= session.instructor %><br>
-	<%= session.address %>, <%= session.postal_code %>
-	<%= button_to 'Attend', line_items_path(:session_id => session), :class => 'btn btn-success' %></p>
+<h1><%= @course.title %></h1>
+<br />
+<div class = 'col-xs-offset-1 col-xs-10'>
 
-<% end %>
+	
+	<p>
+	<% @course.sessions.each do |session| %>
+	<p><%= button_to 'Attend', line_items_path(:session_id => session), :class => 'btn btn-xs btn-success pull-left' %>&nbsp;&nbsp;&nbsp;<b><%= session.date.strftime("%a, %d %b, %Y") %></b>, <%= session.from.strftime("from %H:%M") %> <%= session.to.strftime("to %H:%M") %>, pianist: <%= session.instructor %> (
+		<%= session.address %>)
+		</p>
+
+	<% end %>
+
+</div>

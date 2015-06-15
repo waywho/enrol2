@@ -6,5 +6,5 @@ class User < ActiveRecord::Base
 
   has_many :courses
   has_many :enrollments
-  has_many :enrolled_sessions, :through => :enrollments, :source => :session
+  # has_many :enrolled_sessions, :through => :enrollments, :source => :session
 end

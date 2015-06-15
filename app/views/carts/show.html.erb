@@ -1,4 +1,6 @@
-<p id="notice"><%= notice %></p>
-
-<%= link_to 'Edit', edit_cart_path(@cart) %> |
-<%= link_to 'Back', carts_path %>
+<h2>Your Cart</h2>
+<ul>
+	<% @cart.line_items.each do |item| %>
+		<li>session: <%= item.session.date %>, <%= item.session.from.strftime("from %H:%M") %> <%= item.session.to.strftime("to %H:%M") %>, <%= item.session.address %>, <%= item.session.postal_code %></li>
+	<% end %>
+</ul>

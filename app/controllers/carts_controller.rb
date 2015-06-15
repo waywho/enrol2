@@ -1,6 +1,29 @@
 class CartsController < InheritedResources::Base
+	before_action :authenticate_user!
+	
+	def index
+	end
 
-  private
+	def show
+		@cart = Cart.find(params[:id])
+	end
+
+	def new
+	end
+
+	def edit
+	end
+
+	def create
+	end
+
+	def update
+	end
+
+	def destroy
+	end
+
+  	private
 
     def cart_params
       params.require(:cart).permit()

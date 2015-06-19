@@ -1,6 +1,21 @@
 <h2>Your Cart</h2>
-<ul>
+<table class = 'shopping-cart'>
 	<% @cart.line_items.each do |item| %>
-		<li>session: <%= item.session.date %>, <%= item.session.from.strftime("from %H:%M") %> <%= item.session.to.strftime("to %H:%M") %>, <%= item.session.address %>, <%= item.session.postal_code %></li>
+		<th>
+			<td>Sessions</td>
+			<td>Date</td>
+			<td>Time</td>
+			<td>Location</td>
+			<td>Cost</td>
+			<td></td>
+		</th>
+		<tr>
+			<td><%= item.session.course.title %></td>
+			<td><%= item.session.date %></td>
+			<td><%= item.session.from.strftime("from %H:%M") %> <%= item.session.to.strftime("to %H:%M") %></td>
+			<td><%= item.session.location %></td>
+			<td><%= item.session.cost %></td>
+			<td><%= link_to 'remove', line_item_path(item), :method => :delete %></td>
+		</tr>
 	<% end %>
-</ul>
+</table>

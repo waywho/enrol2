@@ -5,6 +5,7 @@ ActiveAdmin.register Session do
 		column :from
 		column :to
 		column :instructor
+		column :location
 		column :address
 		column :postal_code
 		column :cost
@@ -24,6 +25,6 @@ ActiveAdmin.register Session do
 #   permitted
 # end
 
-permit_params :date, :from, :to, :instructor, :course_id, :address, :postal_code, :latitude, :longitude, :cost
+permit_params :date, :from, :to, :instructor, :course_id, :location, :address, :postal_code, :latitude, :longitude, :cost
 
 end

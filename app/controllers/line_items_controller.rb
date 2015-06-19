@@ -1,8 +1,8 @@
 class LineItemsController < InheritedResources::Base
 	include CurrentCart
 	before_action :authenticate_user!
-	before_action :set_cart, only: [:create]
-	before_action :set_line_item, only: [:show, :eidt, :update, :destroy]
+	before_action :set_cart, only: [:create, :destroy]
+	before_action :set_line_item, only: [:show, :eidt, :update]
 
 	def index
 	end
@@ -43,7 +43,11 @@ class LineItemsController < InheritedResources::Base
 	end
 
 	def destroy
+		@line_item = @cart.line_items.find(params[:id])
+		@line_item.destroy
 
+		flash[:notice] = "Session removed"
+		redirect_to cart_path(@cart)
 	end
 
   private

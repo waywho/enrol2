@@ -5,8 +5,7 @@
 	
 	<p>
 	<% @course.sessions.each do |session| %>
-	<p><%= button_to 'Attend', line_items_path(:session_id => session), :class => 'btn btn-xs btn-success pull-left' %>&nbsp;&nbsp;&nbsp;<b><%= session.date.strftime("%a, %d %b, %Y") %></b>, <%= session.from.strftime("from %H:%M") %> <%= session.to.strftime("to %H:%M") %>, pianist: <%= session.instructor %> (
-		<%= session.location %>)
+	<p><%= button_to 'Attend', line_items_path(:session_id => session), :class => 'btn btn-xs btn-success pull-left round' %>&nbsp;&nbsp;&nbsp;<b><%= session.date.strftime("%a, %d %b, %Y") %></b>, <%= session.from.strftime("from %H:%M") %> <%= session.to.strftime("to %H:%M") %>, pianist: <%= session.instructor %> (<%= session.location %>)
 		</p>
 
 	<% end %>

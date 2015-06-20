@@ -1,21 +1,36 @@
-<h2>Your Cart</h2>
-<table class = 'shopping-cart'>
-	<% @cart.line_items.each do |item| %>
-		<th>
-			<td>Sessions</td>
-			<td>Date</td>
-			<td>Time</td>
-			<td>Location</td>
-			<td>Cost</td>
-			<td></td>
-		</th>
+<h1>Your Shopping Cart</h1>
+<br />
+<div class = 'col-xs-offset-1 col-xs-10'>
+
+	<table class = 'shopping-cart'>
 		<tr>
-			<td><%= item.session.course.title %></td>
+			<th>Sessions</th>
+			<th>Date</th>
+			<th>Time</th>
+			<th>Location</th>
+			<th>Cost</th>
+			<th></th>
+		</tr>
+		<% @items.each do |item| %>
+		<tr>
+			<td><b><%= item.session.course.title %></b></td>
 			<td><%= item.session.date %></td>
 			<td><%= item.session.from.strftime("from %H:%M") %> <%= item.session.to.strftime("to %H:%M") %></td>
 			<td><%= item.session.location %></td>
-			<td><%= item.session.cost %></td>
+			<td><%= number_to_currency item.session.cost,:unit=>'£ ' %></td>
 			<td><%= link_to 'remove', line_item_path(item), :method => :delete %></td>
 		</tr>
-	<% end %>
-</table>
+		<% end %>
+		<tr>
+			<td class="total price" colspan="6">
+	  			<b>Total: </b><%= number_to_currency @cart.total_price, :unit => '£ ' %>
+			</td>
+		</tr>
+	</table>
+	<br />
+
+	<p>
+		<%= link_to "Continue Shopping", courses_path %> | 
+		<%= link_to "Check Out with Paypal", @cart.paypal_url(courses_url) %>
+	</p>
+</div>

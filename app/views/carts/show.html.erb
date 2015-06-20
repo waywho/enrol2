@@ -31,6 +31,6 @@
 
 	<p>
 		<%= link_to "Continue Shopping", courses_path %> | 
-		<%= link_to "Check Out with Paypal", @cart.paypal_url(courses_url) %>
+		<%= link_to "Check Out with Paypal", @cart.paypal_url(courses_url, payment_notification_url) %>
 	</p>
 </div>

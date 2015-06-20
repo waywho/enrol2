@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Params:</strong>
+  <%= @payment_notification.params %>
+</p>
+
+<p>
+  <strong>Cart:</strong>
+  <%= @payment_notification.cart_id %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @payment_notification.status %>
+</p>
+
+<p>
+  <strong>Transaction:</strong>
+  <%= @payment_notification.transaction_id %>
+</p>
+
+<p>
+  <strong>Create:</strong>
+  <%= @payment_notification.create %>
+</p>
+
+<%= link_to 'Edit', edit_payment_notification_path(@payment_notification) %> |
+<%= link_to 'Back', payment_notifications_path %>

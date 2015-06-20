@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :payment_notifications
+
   resources :line_items
 
   resources :carts

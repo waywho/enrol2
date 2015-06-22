@@ -11,13 +11,13 @@
 
 <div class = 'col-xs-offset-1 col-xs-8'>
 	<ul class="nav nav-tabs">
-	  <li role="presentation" class="<%= 'active' if params[:controller] == 'static_pages' %>"><%= link_to 'Home', root_path %></li>
-	  <li role="presentation" class="<%= 'active' if params[:controller] == 'courses' %>"><%= link_to 'Courses', courses_path %></li>
-	  	<li role="presentation" class="<%= 'active' if params[:controller] == 'carts' %>">
-	  	<% if @cart.present? %>
+	  <li role="presentation" class="<%= 'active' if params[:controller] == 'static_pages' %>"><%= link_to 'Audition Club', root_path %></li>
+	  <li role="presentation" class="<%= 'active' if params[:controller] == 'courses' %>"><%= link_to 'Sessions', courses_path %></li>
+	  <li role="presentation" class="<%= 'active' if params[:controller] == 'carts' %>">
+	  <% if @cart.present? %>
 	  	<%= link_to 'Cart', cart_path(@cart) %></li>
 	  	<% end %>
-	 <% if user_signed_in? %>
+	  <% if user_signed_in? %>
 	  	<li role="presentation" class="dropdown">
 	  		<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
       			My Dashboard <span class="caret"></span>

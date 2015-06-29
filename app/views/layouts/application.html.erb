@@ -22,8 +22,8 @@
 	  		<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
       			My Dashboard <span class="caret"></span>
     		</a>
-		  	<ul class="dropdown-menu">
-		  		<%= link_to 'Sign out', destroy_user_session_path, :method => :delete %>
+		  	<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+		  		<li><%= link_to 'Sign out', destroy_user_session_path, :method => :delete %></li>
 		  	</ul>
 		</li>
 	 <% else %>

@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  
+  root 'static_pages#index'
+
   resources :payment_notifications
 
   resources :line_items
@@ -9,13 +12,13 @@ Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   
-  root 'static_pages#index'
-
   resources :courses
 
   get 'about', :to => 'static_pages#about'
 
   get 'faq', :to => 'static_pages#faq'
+
+  resource :dashboard, :only => [:show] 
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

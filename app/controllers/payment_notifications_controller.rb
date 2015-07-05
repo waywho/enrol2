@@ -2,7 +2,7 @@ class PaymentNotificationsController < InheritedResources::Base
 	protect_from_forgery :except => [:create]
 
 	def create
-		PaymentNotification.create!(:params => params, :user_id => params[:user_id], :cart_id => params[:invoice], :status => params[:payment_status], :transaction_id => params[:transaction_id])
+		PaymentNotification.create!(:params => params, :user_id => params[:user_id], :cart_id => params[:invoice], :status => params[:payment_status], :transaction_id => params[:txn_id])
 		render :nothing => true
 	end
 

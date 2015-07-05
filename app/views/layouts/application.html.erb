@@ -20,9 +20,10 @@
 	  <% if user_signed_in? %>
 	  	<li role="presentation" class="dropdown">
 	  		<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-      			My Dashboard <span class="caret"></span>
+      			<span class="caret"></span>
     		</a>
 		  	<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+		  		<li><%= link_to 'My Dashboard', dashboard_path %></li>
 		  		<li><%= link_to 'Sign out', destroy_user_session_path, :method => :delete %></li>
 		  	</ul>
 		</li>
@@ -42,7 +43,8 @@
 	<% if alert.present? %>
 	<p class="alert alert-danger"><%= alert %></p>
 	<% end %>
-
+	<br />
+	<br />
 	<%= yield %>
 </div>
 </body>

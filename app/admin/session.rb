@@ -1,15 +1,19 @@
 ActiveAdmin.register Session do
 	index do
 		column :id
-		column :date
-		column :from
-		column :to
+		column "Date", :from do |session|
+			session.from.strftime("%d %b, %Y") 
+		end
+		column :from do |session|
+			session.from.strftime("%H:%M") 
+		end
+	
+		column :to do |session|
+			session.to.strftime("%H:%M") 
+		end
 		column :instructor
 		column :location
-		column :address
-		column :postal_code
 		column :cost
-		column :user_id
 		actions
 	end
 # See permitted parameters documentation:
@@ -25,6 +29,6 @@ ActiveAdmin.register Session do
 #   permitted
 # end
 
-permit_params :date, :from, :to, :instructor, :course_id, :location, :address, :postal_code, :latitude, :longitude, :cost
+permit_params :from, :to, :instructor, :course_id, :location, :address, :postal_code, :latitude, :longitude, :cost
 
 end

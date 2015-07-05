@@ -13,7 +13,7 @@
 		<% @items.each do |item| %>
 		<tr>
 			<td><b><%= item.session.course.title %></b></td>
-			<td><%= item.session.date %></td>
+			<td><%= item.session.from.strftime("%a, %d %b, %Y") %></td>
 			<td><%= item.session.from.strftime("from %H:%M") %> <%= item.session.to.strftime("to %H:%M") %></td>
 			<td><%= item.session.location %></td>
 			<td><%= number_to_currency item.session.cost,:unit=>'£ ' %></td>

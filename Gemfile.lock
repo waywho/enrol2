@@ -106,6 +106,7 @@ GEM
     mime-types (1.25.1)
     minitest (5.7.0)
     multi_json (1.11.0)
+    nifty-generators (0.4.6)
     orm_adapter (0.5.0)
     pg (0.18.2)
     polyamorous (1.2.0)
@@ -189,6 +190,7 @@ DEPENDENCIES
   devise
   jbuilder (~> 2.0)
   jquery-rails
+  nifty-generators
   pg
   rails (= 4.1.4)
   sass-rails (~> 4.0.3)

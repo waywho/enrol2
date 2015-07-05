@@ -1,0 +1,12 @@
+<div class = 'col-xs-offset-1 col-xs-10'>
+<h1>My Dashboard</h1>
+	<br />
+	Email:	<%= current_user.email %>
+	<br />
+
+	<h2>Enrolled Sessions:</h2>
+	<br />
+	<% current_user.enrolled_sessions.each do |session| %>
+	<b>Time: </b><%= session.from.strftime("%H:%M") %>, <b>Date: </b><%= session.date.strftime("%a, %d %b, %Y") %>, <b>Location: </b> <%= session.location %> <br>
+	<% end %>
+</div>

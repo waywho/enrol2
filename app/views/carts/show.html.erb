@@ -1,7 +1,6 @@
+<div class = 'col-xs-offset-1 col-xs-10'>
 <h1>Your Shopping Cart</h1>
 <br />
-<div class = 'col-xs-offset-1 col-xs-10'>
-
 	<table class = 'shopping-cart'>
 		<tr>
 			<th>Sessions</th>
@@ -30,7 +29,15 @@
 	<br />
 
 	<p>
-		<%= link_to "Continue Shopping", courses_path %> | 
-		<%= link_to "Check Out with Paypal", @cart.paypal_url(courses_url) %>
+		<%= link_to "Continue Shopping", courses_path %>
+		<% if user_signed_in? %>
+			<%= form_tag APP_CONFIG[:paypal_url] do %>
+			<%= hidden_field_tag :cmd, "_s-xclick" %>
+			<%= hidden_field_tag :encrypted, @cart.paypal_encrypted(courses_url, payment_notifications_url(:secret => APP_CONFIG[:paypal_secret], :user_id => current_user.id)) %>
+			<%= submit_tag "Checkout", :class => 'btn btn-success pull-right' %>
+			<% end %>
+		<% else %>
+			<%= link_to 'Sign In to Check Out', new_user_session_path %></li>
+		<% end %>
 	</p>
 </div>

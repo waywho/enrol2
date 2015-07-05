@@ -1,8 +1,7 @@
 class LineItemsController < InheritedResources::Base
 	include CurrentCart
-	before_action :authenticate_user!
 	before_action :set_cart, only: [:create, :destroy]
-	before_action :set_line_item, only: [:show, :eidt, :update]
+	before_action :set_line_item, only: [:show, :edit, :update, :destroy]
 
 	def index
 	end
@@ -43,7 +42,7 @@ class LineItemsController < InheritedResources::Base
 	end
 
 	def destroy
-		@line_item = @cart.line_items.find(params[:id])
+		# @line_item = @cart.line_items.find(params[:id])
 		@line_item.destroy
 
 		flash[:notice] = "Session removed"
@@ -51,6 +50,9 @@ class LineItemsController < InheritedResources::Base
 	end
 
   private
+  	def set_line_item
+  		@line_item = LineItem.find(params[:id])
+  	end
 
     def line_item_params
       params.require(:line_item).permit(:session_id, :cart_id)

@@ -1,11 +1,13 @@
-<h1> Courses </h1>
-
-<div class = 'col-xs-offset-1 col-xs-8'>
-
+<div class = 'col-xs-offset-1 col-xs-10'>
+<h1>Sessions</h1>
 <br />
 <% @courses.each do |course| %>
-	<h4><%= link_to course.title, course_path(course) %><p></h4>
-	<%= course.description %></p>
+	<%= course.description %>
+	<% course.sessions.each do |session| %>
+	<p><%= button_to 'Attend', line_items_path(:session_id => session), :class => 'btn btn-xs btn-success pull-left round' %>&nbsp;&nbsp;&nbsp;<b><%= session.date.strftime("%a, %d %b, %Y") %></b>, <%= session.from.strftime("from %H:%M") %> <%= session.to.strftime("to %H:%M") %>, pianist: <%= session.instructor %> (<%= session.location %>)
+		</p>
+
+	<% end %>
 <% end %>
 
 </div>

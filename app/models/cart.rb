@@ -19,7 +19,7 @@ class Cart < ActiveRecord::Base
 	  line_items.each_with_index do |item, index|
 	    values.merge!({
 	      "amount_#{index+1}" => item.session.cost,
-	      "item_name_#{index+1}" => item.session.date,
+	      "item_name_#{index+1}" => item.session.from.strftime("%d-%b-%Y"),
 	      "item_number_#{index+1}" => item.id,
 	    })
 	  end

@@ -38,6 +38,10 @@ gem 'simple_form'
 
 gem 'nifty-generators', :group => :development
 
+gem 'stripe'
+
+gem 'figaro'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

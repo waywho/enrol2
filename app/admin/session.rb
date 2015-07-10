@@ -2,14 +2,14 @@ ActiveAdmin.register Session do
 	index do
 		column :id
 		column "Date", :from do |session|
-			session.from.strftime("%d %b, %Y") if session.from.present?
+			date_display(session.from)
 		end
 		column :from do |session|
-			session.from.strftime("%H:%M") if session.from.present?
+			time_display(session.from)
 		end
 	
 		column :to do |session|
-			session.to.strftime("%H:%M") if session.to.present?
+			time_display(session.to)
 		end
 		column :instructor
 		column :location

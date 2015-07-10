@@ -1,6 +1,8 @@
 class ChangeColumnSession < ActiveRecord::Migration
   def change
-  	change_column :sessions, :from, :datetime
-  	change_column :sessions, :to, :datetime
+  	remove_column :sessions, :from
+  	remove_column :sessions, :to
+  	add_column :sessions, :from, :datetime
+  	add_column :sessions, :to, :datetime
   end
 end

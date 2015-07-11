@@ -30,12 +30,15 @@
 
 	<p>
 		<%= link_to "Continue Shopping", courses_path %>
-		<% if user_signed_in? %>
-			<%= form_tag APP_CONFIG[:paypal_url] do %>
-			<%= hidden_field_tag :cmd, "_s-xclick" %>
-			<%= hidden_field_tag :encrypted, @cart.paypal_encrypted(courses_url, payment_notifications_url(:secret => APP_CONFIG[:paypal_secret], :user_id => current_user.id)) %>
-			<%= submit_tag "Checkout", :class => 'btn btn-success pull-right' %>
-			<% end %>
+		<% if current_user %>
+			<%= form_tag charges_path do %>
+			
+				<script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+                data-description="Course Enrollment (<%= number_to_currency @cart.total_price, :unit => '£ ' %>)"
+                data-currency="gbp"
+                data-amount="<%= (@cart.total_price * 100).to_i %>"></script>
+      		<% end %>
 		<% else %>
 			<%= link_to 'Sign In to Check Out', new_user_session_path %></li>
 		<% end %>

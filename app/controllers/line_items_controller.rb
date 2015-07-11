@@ -20,9 +20,9 @@ class LineItemsController < InheritedResources::Base
 		session = Session.find(params[:session_id])
 		@line_item = @cart.line_items.create(session: session)
 
-		flash[:notice] = "Added #{session.from.strftime("%d-%b-%Y")} to cart."
+		flash[:notice] = "Added #{session.from.strftime("%d-%b-%Y") if session.from.present?} to cart."
 
-		redirect_to course_path(session.course_id)
+		redirect_to courses_path
 
 		# respond_to do |format|
 		# 	if @line_item.save

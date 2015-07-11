@@ -1,4 +1,6 @@
 class CartsController < InheritedResources::Base
+	include CurrentCart
+	before_action :set_cart
 	
 	def index
 	end

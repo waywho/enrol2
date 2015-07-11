@@ -6,7 +6,4 @@ class LineItem < ActiveRecord::Base
   	session.cost
   end
 
-  def get_date
-  	session.from.strftime("%a, %d %b, %Y")
-  end
 end

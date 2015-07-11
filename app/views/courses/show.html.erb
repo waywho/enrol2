@@ -3,7 +3,7 @@
 	<br />
 	<p>
 	<% @course.sessions.each do |session| %>
-	<p><%= button_to 'Attend', line_items_path(:session_id => session), :class => 'btn btn-xs btn-success pull-left round' %>&nbsp;&nbsp;&nbsp;<b><%= session.from.strftime("%a, %d %b, %Y")  %></b>, <%= session.from.strftime("from %H:%M") %> <%= session.to.strftime("to %H:%M") %>, pianist: <%= session.instructor %> (<%= session.location %>)
+	<p><%= button_to 'Attend', line_items_path(:session_id => session), :class => 'btn btn-xs btn-success pull-left round' %>&nbsp;&nbsp;&nbsp;<b><%= date_display(session.from)  %></b>, <%= from_time_display(session.from) %> <%= to_time_display(session.to) %>, pianist: <%= session.instructor %> (<%= session.location %>)
 	<% end %>
 
 </div>

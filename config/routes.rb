@@ -2,8 +2,6 @@ Rails.application.routes.draw do
   
   root 'static_pages#index'
 
-  resources :payment_notifications
-
   resources :line_items
 
   resources :carts
@@ -19,6 +17,8 @@ Rails.application.routes.draw do
   get 'faq', :to => 'static_pages#faq'
 
   resource :dashboard, :only => [:show] 
+
+  resources :charges
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

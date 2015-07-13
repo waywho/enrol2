@@ -13,6 +13,6 @@ ActiveAdmin.register User do
 #   permitted
 # end
 
-permit_params :email, :first_name, :last_name
+permit_params :email, :first_name, :last_name, :reset_password_token
 
 end

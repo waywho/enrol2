@@ -4,7 +4,7 @@
 <% if @courses.present? %>
 
 		<% @courses.each do |course| %>
-			<%= course.description %> <b>Each session costs <%= course.cost %></b>
+			<%= course.description %> <b>Each session costs <%= number_to_currency course.cost, :unit => '£ ' %></b>
 		<br />
 		<br />
 		<table class = 'table'>
@@ -21,7 +21,7 @@
 		</thead>
 		<tbody>
 			<%= simple_form_for LineItem.new do |f| %>
-				<% course.sessions.each do |session| %>
+				<% course.sessions.order(:from).each do |session| %>
 
 			<tr>
 				<td>

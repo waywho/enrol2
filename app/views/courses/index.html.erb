@@ -7,25 +7,28 @@
 			<%= course.description %> <b>Each session costs <%= number_to_currency course.cost, :unit => '£ ' %></b>
 		<br />
 		<br />
-		<table class = 'table'>
 
-		<thead>
-			<tr>
-				<th>Sessions</th>
-				<th>Date</th>
-				<th>Time</th>
-				<th>Pianist</th>
-				<th>Location</th>
-				<th></th>
-			</tr>
-		</thead>
-		<tbody>
-			<%= simple_form_for LineItem.new do |f| %>
-				<% course.sessions.order(:from).each do |session| %>
+			
+			<%= simple_form_for @line_item, :url => line_items_path, :method => :post do |f| %>
 
-			<tr>
+			<table class = 'table'>
+
+			<thead>
+				<tr>
+					<th>Sessions</th>
+					<th>Date</th>
+					<th>Time</th>
+					<th>Pianist</th>
+					<th>Location</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				
+			<% course.sessions.order(:from).each do |session| %>
+			<tr classappend=>
 				<td>
-					<%= check_box_tag 'session_ids[]', session.id, @cart.line_items.map {|item| item.session.id }.include?(session.id) %>
+					<%= check_box_tag 'session_ids[]', session.id, session_in_cart?(session), :disabled => session_in_cart?(session) %>
 				</td>
 				<td>
 					<b><%= date_display(session.from) %></b>

@@ -41,6 +41,7 @@ class LineItemsController < InheritedResources::Base
 	end
 
 	def update
+		
 	end
 
 	def destroy

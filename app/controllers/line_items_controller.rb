@@ -24,7 +24,7 @@ class LineItemsController < InheritedResources::Base
 
 		flash[:notice] = "Added your selected sessions to cart."
 
-		redirect_to courses_path
+		redirect_to cart_path(@cart)
 
 		# respond_to do |format|
 		# 	if @line_item.save

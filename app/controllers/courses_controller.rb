@@ -4,6 +4,7 @@ class CoursesController < ApplicationController
 
 	def index
 		@courses = Course.all
+		@line_item = LineItem.new
 	end
 
 	def show

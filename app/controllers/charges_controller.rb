@@ -28,7 +28,7 @@ class ChargesController < ApplicationController
 
 		@cart.update_attributes(purchased_at: Time.now, user_id: current_user.id, cost: @amount)
 
-		redirect_to courses_path
+		redirect_to thank_you_path(@cart)
 
 		rescue Stripe::CardError => e
 		  flash[:error] = e.message

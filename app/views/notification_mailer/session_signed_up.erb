@@ -2,11 +2,11 @@
 <p>
 	Congrats! <b>You have signed up to these Audition Club sessions:</b>
 	<% @sessions.each do |session| %>
-	<%= session.from.to_s(:short) %>
+		<%= session.from.to_s(:long) %>
 	<% end %>
 </p>
 <p>
-	See your course sessions <%= link_to 'here', courses_path %>
+	See course sessions <%= link_to 'here', courses_url %>
 </p>
 
 Keep on singing,<br/>

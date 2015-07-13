@@ -112,8 +112,8 @@ ActiveRecord::Schema.define(version: 20150713151415) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "location"
-    t.datetime "from"
     t.datetime "to"
+    t.datetime "from"
   end
 
   add_index "sessions", ["course_id"], name: "index_sessions_on_course_id", using: :btree

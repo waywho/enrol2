@@ -16,6 +16,8 @@ Rails.application.routes.draw do
 
   get 'faq', :to => 'static_pages#faq'
 
+  get 'thank_you/:cart_id', :to => 'static_pages#thank_you', as: :thank_you
+
   resource :dashboard, :only => [:show] 
 
   resources :charges

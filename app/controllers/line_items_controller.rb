@@ -17,10 +17,12 @@ class LineItemsController < InheritedResources::Base
 	end
 
 	def create
-		session = Session.find(params[:session_id])
-		@line_item = @cart.line_items.create(session: session)
+		params[:session_ids].each do |sess_id|
+			session = Session.find_by(:id => sess_id)
+			@cart.line_items.create(session: session)
+		end
 
-		flash[:notice] = "Added #{session.from.strftime("%d-%b-%Y") if session.from.present?} to cart."
+		flash[:notice] = "Added your selected sessions to cart."
 
 		redirect_to courses_path
 
@@ -55,7 +57,7 @@ class LineItemsController < InheritedResources::Base
   	end
 
     def line_item_params
-      params.require(:line_item).permit(:session_id, :cart_id)
+      params.require(:line_item).permit(:session_id, :cart_id, :session_ids)
     end
 end
 

@@ -6,7 +6,6 @@ class CartsController < InheritedResources::Base
 	end
 
 	def show
-		@cart = Cart.find(params[:id])
 		@items = @cart.line_items
 	end
 

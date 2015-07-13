@@ -1,30 +1,34 @@
 <div class = 'col-xs-offset-1 col-xs-10'>
 <h1>Your Shopping Cart</h1>
 <br />
-	<table class = 'shopping-cart'>
-		<tr>
-			<th>Sessions</th>
-			<th>Date</th>
-			<th>Time</th>
-			<th>Location</th>
-			<th>Cost</th>
-			<th></th>
-		</tr>
+	<table class = 'table table_striped'>
+		<thead>
+			<tr>
+				<th>Sessions</th>
+				<th>Date</th>
+				<th>Time</th>
+				<th>Location</th>
+				<th>Cost</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
 		<% @items.each do |item| %>
-		<tr>
-			<td><b><%= item.session.course.title %></b></td>
-			<td><%= date_display(item.session.from) %></td>
-			<td><%= from_time_display(item.session.from) %> <%= to_time_display(item.session.to) %></td>
-			<td><%= item.session.location %></td>
-			<td><%= number_to_currency item.session.cost,:unit=>'£ ' %></td>
-			<td><%= link_to 'remove', line_item_path(item), :method => :delete %></td>
-		</tr>
-		<% end %>
-		<tr>
-			<td class="total price" colspan="6">
-	  			<b>Total: </b><%= number_to_currency @cart.total_price, :unit => '£ ' %>
-			</td>
-		</tr>
+			<tr>
+				<td><b><%= item.session.course.title if item.session.course.present? %></b></td>
+				<td><%= date_display(item.session.from) %></td>
+				<td><%= from_time_display(item.session.from) %> <%= to_time_display(item.session.to) %></td>
+				<td><%= item.session.location %></td>
+				<td><%= number_to_currency item.session.cost,:unit=>'£ ' %></td>
+				<td><%= link_to 'remove', line_item_path(item), :method => :delete %></td>
+			</tr>
+			<% end %>
+			<tr>
+				<td class="total price" colspan="6">
+		  			<b>Total: </b><%= number_to_currency @cart.total_price, :unit => '£ ' %>
+				</td>
+			</tr>
+		</tbody>
 	</table>
 	<br />
 

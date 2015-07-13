@@ -2,14 +2,54 @@
 <h1>Sessions</h1>
 <br />
 <% if @courses.present? %>
-<% @courses.each do |course| %>
-	<%= course.description %>
-	<% course.sessions.each do |session| %>
-	<p><%= button_to 'Attend', line_items_path(:session_id => session), :class => 'btn btn-xs btn-success pull-left round' %>&nbsp;&nbsp;&nbsp;<b><%= date_display(session.from) %></b>, <%= from_time_display(session.from) %> <%= to_time_display(session.to) %>, pianist: <%= session.instructor %> (<%= session.location %>)
-	<% end %>
-<% end %>
+
+		<% @courses.each do |course| %>
+			<%= course.description %> <b>Each session costs £8.</b>
+		<br />
+		<br />
+		<table class = 'table'>
+
+		<thead>
+			<tr>
+				<th>Sessions</th>
+				<th>Date</th>
+				<th>Time</th>
+				<th>Pianist</th>
+				<th>Location</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<%= simple_form_for LineItem.new do |f| %>
+				<% course.sessions.each do |session| %>
+
+			<tr>
+				<td>
+					<%= check_box_tag 'session_ids[]', session.id, @cart.line_items.map {|item| item.session.id }.include?(session.id) %>
+				</td>
+				<td>
+					<b><%= date_display(session.from) %></b>
+				</td>
+				<td>
+					<%= from_time_display(session.from) %> <%= to_time_display(session.to) %>
+				</td> 
+				<td>
+					<%= session.instructor %> 
+				</td>
+				<td>
+					(<%= session.location %>)
+				</td>
+			</tr>						
+					<% end %>
+		</tbody>
+		</table>
+		<br />
+					<%= f.submit 'Add to Cart', :class => 'btn btn-success' %>
+				<% end %>
+		<% end %>
+
 <% else %>
-There are no sessions at this time.
+	There are no sessions at this time.
 <% end %>
 
 </div>

@@ -24,7 +24,12 @@
 			</tr>
 			<% end %>
 			<tr>
-				<td class="total price" colspan="6">
+				<td class="service-charge" colspan="6">
+					<i>Card Payment Service Charge:</i> <%= number_to_currency (@cart.total_price * 0.019 + 0.2), :unit => '£ ' %>
+				</td>
+			</tr>
+			<tr>
+				<td class="tota-price" colspan="6">
 		  			<b>Total: </b><%= number_to_currency @cart.total_price, :unit => '£ ' %>
 				</td>
 			</tr>
@@ -39,9 +44,9 @@
 			
 				<script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                 data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-                data-description="Course Enrollment (<%= number_to_currency @cart.total_price, :unit => '£ ' %>)"
+                data-description="Course Enrollment (<%= number_to_currency (@cart.total_price * 1.019 + 0.2), :unit => '£ ' %>)"
                 data-currency="gbp"
-                data-amount="<%= (@cart.total_price * 100).to_i %>"></script>
+                data-amount="<%= ((@cart.total_price * 1.019 + 0.2) * 100).to_i %>"></script>
       		<% end %>
 		<% else %>
 			| <%= link_to 'Sign In to Check Out', new_user_session_path %></li>

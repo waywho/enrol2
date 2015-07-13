@@ -4,7 +4,7 @@
 <% if @courses.present? %>
 
 		<% @courses.each do |course| %>
-			<%= course.description %> <b>Each session costs £8.</b>
+			<%= course.description %> <b>Each session costs <%= course.cost %></b>
 		<br />
 		<br />
 		<table class = 'table'>

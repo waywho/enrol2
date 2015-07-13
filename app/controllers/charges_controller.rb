@@ -26,7 +26,7 @@ class ChargesController < ApplicationController
 			current_user.enrollments.create(session_id: item.session.id)
 		end
 
-		@cart.update_attribute(:purchased_at, Time.now)
+		@cart.update_attributes(purchased_at: Time.now, user_id: current_user.id, cost: @amount)
 
 		redirect_to courses_path
 

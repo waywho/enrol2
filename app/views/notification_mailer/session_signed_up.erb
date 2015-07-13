@@ -1,0 +1,13 @@
+<p>Hey There!</p>
+<p>
+	Congrats! <b>You have signed up to these Audition Club sessions:</b>
+	<% @sessions.each do |session| %>
+	<%= session.from.to_s(:short) %>
+	<% end %>
+</p>
+<p>
+	See your course sessions <%= link_to 'here', courses_path %>
+</p>
+
+Keep on singing,<br/>
+WeiHsi

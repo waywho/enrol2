@@ -1,0 +1,11 @@
+Hi, There,
+
+	Congrats! You have signed up to Audition Club sessions:
+	<% @sessions.each do |session| %>
+	<%= session.from.to_s(:short) %>
+	<% end %>
+
+	See your course sessions <%= courses_path %>
+
+Keep on singing,
+WeiHsi

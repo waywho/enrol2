@@ -11,5 +11,9 @@ class Cart < ActiveRecord::Base
 		NotificationMailer.session_signed_up(self).deliver
 	end
 
+	def send_invoice
+		NotificationMailer.request_invoice(self, current_user).deliver
+	end
+
 end
 

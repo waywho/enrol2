@@ -10,6 +10,15 @@ class NotificationMailer < ActionMailer::Base
   	@user = cart.user
 
   	mail(to: @user.email,
-  		subject: "You have now signed up to #{course_titles} sessions")
+  		subject: "You have now signed up to #{course_titles.to_s} sessions")
   end
+
+  def request_invoice(cart, user)
+    @sessions = cart.line_items.map(&:session)
+    course_titles = cart.line_items.map(&:session).map(&:course).uniq.map(&:title)
+
+    mail(to: user.email,
+      subject: "Your invoice for #{course_titles.to_s} sessions")
+  end
+
 end

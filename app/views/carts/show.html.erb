@@ -24,13 +24,8 @@
 			</tr>
 			<% end %>
 			<tr>
-				<td class="service-charge" colspan="6">
-					<i>Card Payment Service Charge:</i> <%= number_to_currency (@cart.total_price * 0.019 + 0.2), :unit => '£ ' %>
-				</td>
-			</tr>
-			<tr>
 				<td class="tota-price" colspan="6">
-		  			<b>Total: </b><%= number_to_currency @cart.total_price, :unit => '£ ' %>
+		  			<b>Total: </b><%= number_to_currency @cart.total_price, :unit => '£ ' %> (<i>plus extra card payment service charge: <%= number_to_currency (@cart.total_price * 0.019 + 0.2), :unit => '£ ' %>)</i>
 				</td>
 			</tr>
 		</tbody>

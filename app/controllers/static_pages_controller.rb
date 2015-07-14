@@ -15,4 +15,9 @@ class StaticPagesController < ApplicationController
 		@cart = Cart.find(params[:cart_id])
 		@items = @cart.line_items
 	end
+
+	def thank_you_invoice
+		@cart = Cart.find(params[:cart_id])
+		@items = @cart.line_items
+	end
 end

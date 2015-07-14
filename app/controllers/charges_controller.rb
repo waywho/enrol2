@@ -1,4 +1,5 @@
 class ChargesController < ApplicationController
+	before_action :authenticate_user!
 	include CurrentCart
 	before_action :set_cart
 
@@ -33,5 +34,17 @@ class ChargesController < ApplicationController
 		rescue Stripe::CardError => e
 		  flash[:error] = e.message
 		  redirect_to root_path
+	end
+
+	def send_invoice
+		NotificationMailer.request_invoice(@cart, current_user).deliver
+
+		@cart.line_items.each do |item|
+			current_user.enrollments.create(session_id: item.session.id)
+		end
+
+		@cart.update_attributes(purchased_at: Time.now, user_id: current_user.id, cost: @amount)
+
+		redirect_to thank_you_invoice_path(@cart)
 	end
 end

@@ -1,4 +1,5 @@
 class CartsController < InheritedResources::Base
+	before_action :authenticate_user!, :only => [:send_invoice]
 	include CurrentCart
 	before_action :set_cart
 	

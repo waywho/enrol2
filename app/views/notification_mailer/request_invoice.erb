@@ -1,0 +1,33 @@
+<p>Hey There!</p>
+<p>
+	You have requested an electronic invoice to sign up for the following <b><%= @course_titles.to_s %></b>sessions:
+</p>
+	<br />
+	<p>
+		<b>Invoice Number: <%= @cart.id %></b>
+	</p>
+	<ul>
+	<% @sessions.each do |session| %>
+	<li> <%= session.from.to_s(:from_date) %></li>
+	<% end %>
+	</ul>
+	<p>
+	<b>Total cost:</b> <%= number_to_currency @cart.total_price, :unit => '£ ' %>
+	</p>
+	<p>
+	<b>BACs Payment Details:</b><br />
+	Account Name: Logical Thinking Consultancy Ltd.
+	Bank: The co-operative Bank
+	Account Number: 69672576
+	Account Sort-Code: 08-92-99
+	</p>
+	<br />
+	<p>
+	Please make you payment by the first session.
+	</p>
+<p>
+	See course sessions <%= link_to 'here', courses_url %>
+</p>
+
+Keep on singing,<br/>
+WeiHsi

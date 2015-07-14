@@ -25,7 +25,12 @@
 			<% end %>
 			<tr>
 				<td class="tota-price" colspan="6">
-		  			<b>Total: </b><%= number_to_currency @cart.total_price, :unit => '£ ' %> (<i>plus extra card payment service charge: <%= number_to_currency (@cart.total_price * 0.019 + 0.2), :unit => '£ ' %>)</i>
+		  			<b>Total: </b><%= number_to_currency @cart.total_price, :unit => '£ ' %> (<i>plus extra card payment service charge: 
+		  			<% if @cart.total_price == 0 %>
+		  			£ 0.00
+		  			<% else %>
+		  			<%= number_to_currency (@cart.total_price * 0.019 + 0.2), :unit => '£ ' %>
+		  			<% end %>)</i>
 				</td>
 			</tr>
 		</tbody>
@@ -34,15 +39,23 @@
 
 	<p>
 		<%= link_to "Continue Shopping", courses_path %>
+
 		<% if current_user %>
+			<table class = 'btn-table'>
+			<tr>
+				<td>
 			<%= form_tag charges_path do %>
-			
 				<script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                 data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-                data-description="Course Enrollment (<%= number_to_currency (@cart.total_price * 1.019 + 0.2), :unit => '£ ' %>)"
+                data-description="Course Enrollment (<%= number_to_currency @cart.total_price_with_card, :unit => '£ ' %>)"
                 data-currency="gbp"
-                data-amount="<%= ((@cart.total_price * 1.019 + 0.2) * 100).to_i %>"></script>
+                data-amount="<%= (@cart.total_price_with_card * 100).to_i %>"></script>
       		<% end %>
+      	</td>
+      	<td>
+      		<%= button_to 'Request Invoice', invoice_request_path, :method => :get, :class => 'btn btn-warning', :disabled => @cart.total_price == 0 %>
+      	</td>
+      	</tr>
 		<% else %>
 			| <%= link_to 'Sign In to Check Out', new_user_session_path %></li>
 		<% end %>

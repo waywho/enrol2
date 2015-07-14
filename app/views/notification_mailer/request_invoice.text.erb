@@ -1,0 +1,24 @@
+Hey There!
+
+	You have requested an electronic invoice to sign up for the following <%= @course_titles.to_s %> sessions:
+
+	Invoice Number: <%= @cart.id %>
+
+	<% @sessions.each do |session| %>
+	- <%= session.from.to_s(:from_date) %>
+	<% end %>
+
+	Total cost: <%= number_to_currency @cart.total_price, :unit => '£ ' %>
+
+	See course sessions here: <%= courses_url %>
+
+	BACs Payment Details:
+	Account Name: Logical Thinking Consultancy Ltd.
+	Bank: The co-operative Bank
+	Account Number: 69672576
+	Account Sort-Code: 08-92-99
+
+	Please make you payment by the first session.
+
+Keep on singing,
+WeiHsi

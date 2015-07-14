@@ -14,11 +14,12 @@ class NotificationMailer < ActionMailer::Base
   end
 
   def request_invoice(cart, user)
+    @cart = cart
     @sessions = cart.line_items.map(&:session)
-    course_titles = cart.line_items.map(&:session).map(&:course).uniq.map(&:title)
+    @course_titles = cart.line_items.map(&:session).map(&:course).uniq.map(&:title)
 
     mail(to: user.email,
-      subject: "Your invoice for #{course_titles.to_s} sessions")
+      subject: "Your invoice for #{@course_titles.to_s} sessions")
   end
 
 end

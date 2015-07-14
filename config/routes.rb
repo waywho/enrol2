@@ -18,9 +18,13 @@ Rails.application.routes.draw do
 
   get 'thank_you/:cart_id', :to => 'static_pages#thank_you', as: :thank_you
 
+  get 'thank_you_invoice/:cart_id', :to => 'static_pages#thank_you_invoice', as: :thank_you_invoice
+
   resource :dashboard, :only => [:show] 
 
   resources :charges
+
+  get 'invoice_request', :to => 'charges#send_invoice'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

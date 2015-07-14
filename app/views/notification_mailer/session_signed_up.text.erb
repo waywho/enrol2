@@ -2,7 +2,7 @@ Hi, There,
 
 	Congrats! You have signed up to Audition Club sessions:
 	<% @sessions.each do |session| %>
-	<%= session.from.to_s(:short) %>
+	<%= session.from.to_s(:from_date) %>
 	<% end %>
 
 	See course sessions here: <%= courses_url %>

@@ -7,13 +7,16 @@ class Cart < ActiveRecord::Base
 		line_items.to_a.sum(&:get_cost)
 	end
 
+	def total_price_with_card
+		if line_items.to_a.sum(&:get_cost) == 0
+			line_items.to_a.sum(&:get_cost)
+		else
+			line_items.to_a.sum(&:get_cost) * 1.019 + 0.2
+		end
+	end
+
 	def send_confirm_email
 		NotificationMailer.session_signed_up(self).deliver
 	end
-
-	def send_invoice
-		NotificationMailer.request_invoice(self, current_user).deliver
-	end
-
 end
 

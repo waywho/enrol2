@@ -1,9 +1,11 @@
 <p>Hey There!</p>
 <p>
 	Congrats! <b>You have signed up to these Audition Club sessions:</b>
+	<ul>
 	<% @sessions.each do |session| %>
-		<%= session.from.to_s(:long) %>
+	<li> <%= session.from.to_s(:from_date) %></li>
 	<% end %>
+	</ul>
 </p>
 <p>
 	See course sessions <%= link_to 'here', courses_url %>

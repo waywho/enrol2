@@ -42,7 +42,7 @@ class ChargesController < ApplicationController
 		@cart.line_items.each do |item|
 			current_user.enrollments.create(session_id: item.session.id)
 		end
-		@cart.update_attributes(purchased_at: Time.now, user_id: current_user.id, cost: @amount)
+		@cart.update_attributes(invoice_request_date: Time.now, user_id: current_user.id, cost: @amount)
 
 		redirect_to thank_you_invoice_path(@cart)
 	end

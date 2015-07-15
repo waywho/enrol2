@@ -14,6 +14,9 @@ ActiveAdmin.register Session do
 		column :instructor
 		column :location
 		column :cost
+		column 'Number', :enrollments do |session|
+			session.enrollments.count
+		end
 		actions
 	end
 # See permitted parameters documentation:

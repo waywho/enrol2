@@ -36,6 +36,7 @@ class ChargesController < ApplicationController
 	end
 
 	def send_invoice
+		@amount = @cart.line_items.to_a.sum(&:get_cost)
 		NotificationMailer.request_invoice(@cart, current_user).deliver
 
 		@cart.line_items.each do |item|

@@ -45,8 +45,6 @@
 	<% end %>
 	<br />
 	<br />
-	<%= yield %>
-
 
 	<% if params[:controller] == 'static_pages' %>
 		<div class = 'col-xs-12 col-md-3 pull-right'>
@@ -69,6 +67,8 @@
 		<% end %>
 		</div>
 	<% end %>
+
+	<%= yield %>
 	<br class = 'clr' />
 	<br />
 	<br />

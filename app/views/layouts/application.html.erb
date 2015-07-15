@@ -35,6 +35,7 @@
 </div>
 <div class = 'home-page col-xs-offset-1 col-xs-10'>
 	<br />
+
 	<% if notice.present? %>
 	<p class="alert alert-info"><%= notice %></p>
 	<% end %>
@@ -45,6 +46,32 @@
 	<br />
 	<br />
 	<%= yield %>
+
+
+	<% if params[:controller] == 'static_pages' %>
+		<div class = 'col-xs-12 col-md-3 pull-right'>
+		<br />
+		<br />
+		<%= link_to root_path do %>
+			<div class = 'side-link'>
+				<h5>Home</h5>
+			</div>
+		<% end %>
+		<%= link_to about_path do %>
+			<div class = 'side-link'>
+				<h5>About</h5>
+			</div>
+		<% end %>
+		<%= link_to faq_path do %>
+			<div class = 'side-link'>
+				<h5>F.A.Q.</h5>
+			</div>
+		<% end %>
+		</div>
+	<% end %>
+	<br class = 'clr' />
+	<br />
+	<br />
 </div>
 </body>
 </html>

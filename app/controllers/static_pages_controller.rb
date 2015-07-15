@@ -3,12 +3,15 @@ class StaticPagesController < ApplicationController
 	before_action :set_cart, except: :thank_you
 
 	def index
+
 	end
 
 	def about
+
 	end
 
 	def faq
+
 	end
 
 	def thank_you

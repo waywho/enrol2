@@ -12,7 +12,7 @@
 
 body {
 	background: url('argyle.png');
-	background-color: #5c913d;
+	background-color: #4FC8F0;
 	font-family: 'Helvetica neue';
 }
 
@@ -86,4 +86,15 @@ h1, h2, h3, h4, h5 {
 
 .btn-table td {
 	padding: 5px;
+}
+
+.side-link {
+	border-radius: 5px;
+	background-color: grey;
+	text-align: right;
+	padding-top: 1px;
+	padding-bottom: 1px;
+	padding-right: 10px;
+	margin: 5px;
+	color: white;
 }

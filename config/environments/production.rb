@@ -9,7 +9,6 @@ Rails.application.configure do
     :authentication => :plain,
   }
   ActionMailer::Base.delivery_method = :smtp
-  }
 
   # Settings specified here will take precedence over those in config/application.rb.
 

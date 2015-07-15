@@ -13,6 +13,7 @@ ActiveAdmin.register User do
 #   permitted
 # end
 index do
+	selectable_column
 	column :email
 	column :first_name
 	column :last_name

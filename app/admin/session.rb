@@ -1,6 +1,7 @@
 ActiveAdmin.register Session do
 	index do
-		column :id
+		selectable_column
+		id_column
 		column "Date", :from do |session|
 			date_display(session.from)
 		end

@@ -1,9 +1,6 @@
 class NotificationMailer < ActionMailer::Base
   default from: "no-reply@enrolnowapp.com"
 
-  def registered
-  end
-
   def session_signed_up(cart)
   	@sessions = course_titles = cart.line_items.map(&:session)
   	course_titles = cart.line_items.map(&:session).map(&:course).uniq.map(&:title)

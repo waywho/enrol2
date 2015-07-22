@@ -8,7 +8,7 @@ class ChargesController < ApplicationController
 	def create
 
 	  # Amount in cents
-	  	@amount = (@cart.line_items.to_a.sum(&:get_cost) *100).to_i
+	  	@amount = (total_price_w_card(@cart) *100).to_i
 
 		 customer = Stripe::Customer.create(
 		   :email => current_user.email,
@@ -45,5 +45,15 @@ class ChargesController < ApplicationController
 		@cart.update_attributes(invoice_request_date: Time.now, user_id: current_user.id, cost: @amount)
 
 		redirect_to thank_you_invoice_path(@cart)
+	end
+
+	private
+
+	def total_price_w_card(cart)
+		if cart.line_items.to_a.sum(&:get_cost) == 0
+			cart.line_items.to_a.sum(&:get_cost)
+		else
+			cart.line_items.to_a.sum(&:get_cost) * 1.019 + 0.2
+		end
 	end
 end

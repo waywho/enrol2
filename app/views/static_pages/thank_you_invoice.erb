@@ -1,20 +1,19 @@
 <div class = 'col-xs-10 col-md-offset-1 col-md-8'>
 	<h1>Thank you</h1>
 	<br />
-	<h4>Your Order Number: <%= @cart.id %></h4>
+	<h3>Your Order Number: <%= @cart.id %></h3>
 	<br/>
-	Invoice Sent.
+	<h4>Invoice Sent!</h4>
 	<br />
-	<h5>Enrolled Sessions:</h5>
+		The invoice is on its way. You have <i>tentatively</i> enrolled in these sessions:
 	<ul>
 	<% @items.each do |item| %>
 		<li><%= date_display(item.session.from) %>, <%= number_to_currency item.session.cost, :unit => '£' %></li>
 	<% end %>
 	</ul>
 	<b>Total Payment: </b><%= number_to_currency @cart.total_price, :unit => '£' %>
-
 	<p>
-		Thank you for signing up to Audition Club sessions.
+		Thank you for signing up to Audition Club sessions. Please transfer your payment by the date of the first session.
 	</p>
 	<p>
 		To check out all of your enrolled sessions. Go to your <b><%= link_to 'dashboard', dashboard_path %></b>.

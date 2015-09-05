@@ -25,7 +25,7 @@
 			</thead>
 			<tbody>
 				
-			<% course.sessions.order(:from).each do |session| %>
+			<% course.sessions.where('from >= ?', Date.today).order(:from) do |session| %>
 			<tr classappend=>
 				<td>
 					<%= check_box_tag 'session_ids[]', session.id, session_in_cart?(session), :disabled => session_in_cart?(session) %>

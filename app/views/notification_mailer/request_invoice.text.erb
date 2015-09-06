@@ -5,7 +5,7 @@ Hey There!
 	Invoice Number: <%= @cart.id %>
 
 	<% @sessions.each do |session| %>
-	- <%= session.from.to_s(:from_date) %>
+	- <%= session.start.to_s(:start_date) %>
 	<% end %>
 
 	Total cost: <%= number_to_currency @cart.total_price, :unit => '£ ' %>

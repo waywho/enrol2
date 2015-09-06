@@ -1,6 +1,6 @@
 module ApplicationHelper
 	def date_display(datetime)
-		datetime.to_s(:from_date) if datetime.present?
+		datetime.to_s(:start_date) if datetime.present?
 	end
 
 	def date_display2(datetime)
@@ -11,11 +11,11 @@ module ApplicationHelper
 		datetime.to_s(:time_display) if datetime.present?
 	end
 
-	def from_time_display(datetime)
-		datetime.to_s(:from_time) if datetime.present?
+	def start_time_display(datetime)
+		datetime.to_s(:start_time) if datetime.present?
 	end
 
-	def to_time_display(datetime)
-		datetime.to_s(:to_time) if datetime.present?
+	def end_time_display(datetime)
+		datetime.to_s(:end_time) if datetime.present?
 	end
 end

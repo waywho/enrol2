@@ -2,15 +2,15 @@ ActiveAdmin.register Session do
 	index do
 		selectable_column
 		id_column
-		column "Date", :from do |session|
-			date_display(session.from)
+		column "Date", :start do |session|
+			date_display(session.start)
 		end
-		column :from do |session|
-			time_display(session.from)
+		column :start do |session|
+			time_display(session.start)
 		end
 	
-		column :to do |session|
-			time_display(session.to)
+		column :end do |session|
+			time_display(session.end)
 		end
 		column :instructor
 		column :location
@@ -33,6 +33,6 @@ ActiveAdmin.register Session do
 #   permitted
 # end
 
-permit_params :from, :to, :instructor, :course_id, :location, :address, :postal_code, :latitude, :longitude, :cost
+permit_params :start, :to, :instructor, :course_id, :location, :address, :postal_code, :latitude, :longitude, :cost
 
 end

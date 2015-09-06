@@ -16,8 +16,8 @@
 			<% @items.each do |item| %>
 				<tr>
 					<td><b><%= item.session.course.title if item.session.course.present? %></b></td>
-					<td><%= date_display(item.session.from) %></td>
-					<td><%= from_time_display(item.session.from) %> <%= to_time_display(item.session.to) %></td>
+					<td><%= date_display(item.session.start) %></td>
+					<td><%= start_time_display(item.session.start) %> <%= end_time_display(item.session.end) %></td>
 					<td><%= item.session.location %></td>
 					<td><%= number_to_currency item.session.cost,:unit=>'£ ' %></td>
 					<td><%= link_to 'remove', line_item_path(item), :method => :delete %></td>
@@ -37,7 +37,7 @@
 		</table>
 		<br />
 
-			<%= link_to "Continue Shopping", courses_path %>
+			<%= link_to "Continue Shopping", course_path(1) %>
 
 			<% if current_user %>
 				<table class = 'btn-table'>

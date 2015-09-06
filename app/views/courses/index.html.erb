@@ -25,16 +25,16 @@
 			</thead>
 			<tbody>
 				
-			<% course.sessions.where('from >= ?', Date.today).order(:from) do |session| %>
-			<tr classappend=>
+			<% course.sessions.order(:start).each do |session| %>
+			<tr>
 				<td>
 					<%= check_box_tag 'session_ids[]', session.id, session_in_cart?(session), :disabled => session_in_cart?(session) %>
 				</td>
 				<td>
-					<b><%= date_display(session.from) %></b>
+					<b><%= date_display(session.start) %></b>
 				</td>
 				<td>
-					<%= from_time_display(session.from) %> <%= to_time_display(session.to) %>
+					<%= start_time_display(session.start) %> <%= end_time_display(session.end) %>
 				</td> 
 				<td>
 					<%= session.instructor %> 

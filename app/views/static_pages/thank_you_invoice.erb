@@ -8,7 +8,7 @@
 		The invoice is on its way. You have <i>tentatively</i> enrolled in these sessions:
 	<ul>
 	<% @items.each do |item| %>
-		<li><%= date_display(item.session.from) %>, <%= number_to_currency item.session.cost, :unit => '£' %></li>
+		<li><%= date_display(item.session.start) %>, <%= number_to_currency item.session.cost, :unit => '£' %></li>
 	<% end %>
 	</ul>
 	<b>Total Payment: </b><%= number_to_currency @cart.total_price, :unit => '£' %>

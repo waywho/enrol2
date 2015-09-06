@@ -8,7 +8,7 @@
 	</p>
 	<ul>
 	<% @sessions.each do |session| %>
-	<li> <%= session.from.to_s(:from_date) %></li>
+	<li> <%= session.start.to_s(:start_date) %></li>
 	<% end %>
 	</ul>
 	<p>

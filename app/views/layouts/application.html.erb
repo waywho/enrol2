@@ -11,7 +11,7 @@
 <div class = 'col-xs-offset-1 col-xs-8'>
 	<ul class="nav nav-tabs">
 	  <li role="presentation" class="<%= 'active' if params[:controller] == 'static_pages' %>"><%= link_to 'Audition Club', root_path %></li>
-	  <li role="presentation" class="<%= 'active' if params[:controller] == 'courses' %>"><%= link_to 'Sessions', courses_path %></li>
+	  <li role="presentation" class="<%= 'active' if params[:controller] == 'courses' %>"><%= link_to 'Sessions', course_path(1) %></li>
 	  <li role="presentation" class="<%= 'active' if params[:controller] == 'carts' %>">
 	  <% if @cart.present? %>
 	  	<%= link_to 'Cart', cart_path(@cart) %></li>

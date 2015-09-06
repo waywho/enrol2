@@ -8,6 +8,8 @@ class CoursesController < ApplicationController
 	end
 
 	def show
+		@line_item = LineItem.new
 		@course = Course.find(params[:id])
+		@sessions = @course.sessions.where("start > ?", DateTime.now)
 	end
 end

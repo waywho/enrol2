@@ -1,57 +1,15 @@
 <div class = 'col-xs-12 col-md-offset-1 col-md-10'>
-<h1>Sessions</h1>
+<h1>Courses</h1>
 <br />
 <% if @courses.present? %>
-
+	<ul>
 		<% @courses.each do |course| %>
-			<%= course.description %> <b>Each session costs <%= number_to_currency course.cost, :unit => '£ ' %></b>
-		<br />
-		<br />
-
-			
-			<%= simple_form_for @line_item, :url => line_items_path, :method => :post do |f| %>
-
-			<table class = 'table'>
-
-			<thead>
-				<tr>
-					<th>Sessions</th>
-					<th>Date</th>
-					<th>Time</th>
-					<th>Pianist</th>
-					<th>Location</th>
-					<th></th>
-				</tr>
-			</thead>
-			<tbody>
-				
-			<% course.sessions.order(:start).each do |session| %>
-			<tr>
-				<td>
-					<%= check_box_tag 'session_ids[]', session.id, session_in_cart?(session), :disabled => session_in_cart?(session) %>
-				</td>
-				<td>
-					<b><%= date_display(session.start) %></b>
-				</td>
-				<td>
-					<%= start_time_display(session.start) %> <%= end_time_display(session.end) %>
-				</td> 
-				<td>
-					<%= session.instructor %> 
-				</td>
-				<td>
-					(<%= session.location %>)
-				</td>
-			</tr>						
-					<% end %>
-		</tbody>
-		</table>
-		<br />
-					<%= f.submit 'Add to Cart', :class => 'btn btn-success' %>
-				<% end %>
+			<li><h3><%= course.title %></h3>
+			<%= course.description %> <b>Each session costs <%= number_to_currency course.cost, :unit => '£ ' %></b>, <%= link_to 'more info...', course_path(course) %></li>
 		<% end %>
+	</ul>
 <% else %>
-	There are no sessions at this time.
+	There are no courses at this time.
 <% end %>
 
 </div>

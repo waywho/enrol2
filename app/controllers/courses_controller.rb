@@ -10,6 +10,6 @@ class CoursesController < ApplicationController
 	def show
 		@line_item = LineItem.new
 		@course = Course.find(params[:id])
-		@sessions = @course.sessions.where("start > ?", DateTime.now)
+		@sessions = @course.sessions.where("start > ?", DateTime.now).order(:start)
 	end
 end

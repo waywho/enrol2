@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :courses
+  has_many :sessions, :through => :enrollments
   has_many :enrollments
-  has_many :enrolled_sessions, :through => :enrollments, :source => :session
   has_many :carts
 end

@@ -2,7 +2,7 @@ ActiveAdmin.register Session do
 	index do
 		selectable_column
 		id_column
-		column "Date", :start do |session|
+		column "Date" do |session|
 			date_display(session.start)
 		end
 		column :start do |session|
@@ -15,11 +15,27 @@ ActiveAdmin.register Session do
 		column :instructor
 		column :location
 		column :cost
-		column 'Number', :enrollments do |session|
-			session.enrollments.count
+		column 'Number' do |session|
+			session.enrollments.size
 		end
 		actions
 	end
+
+	show do
+		attributes_table do
+			row "Date", :start
+			row :location
+			row :instructor
+			row 'Users' do
+				table_for session.users do
+					column :email
+				end
+			end
+
+		end
+
+	end
+
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #

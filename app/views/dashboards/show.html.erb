@@ -6,7 +6,7 @@
 
 	<h2>Enrolled Sessions:</h2>
 	<br />
-	<% current_user.enrolled_sessions.each do |session| %>
+	<% current_user.sessions.each do |session| %>
 	<b>Time: </b><%= session.start.strftime("%H:%M") %>, <b>Date: </b><%= session.start.strftime("%a, %d %b, %Y") %>, <b>Location: </b> <%= session.location %> <br>
 	<% end %>
 </div>

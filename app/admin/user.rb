@@ -25,6 +25,31 @@ index do
 	actions
 end
 
+show do
+	h3 'User Details'
+	attributes_table do
+		row :id
+		row :first_name
+	    row :last_name
+	    row :email
+	    row :reset_password_sent_at
+	    row :sign_in_count
+	    row :current_sign_in_at    
+	    row :current_sign_in_ip
+	    row :last_sign_in_at
+	    row :last_sign_in_ip
+	    row :created_at
+	    row :updated_at
+	    row :sessions do
+	    	table_for user.sessions do
+	    		column :id
+	    		column :start
+	    	end
+	    end
+	end
+end
+
+
 form do |f|
     f.inputs "User Details" do
       f.input :email

@@ -6,7 +6,7 @@ class ChargesController < ApplicationController
 	end
 
 	def create
-
+		if @cart.total_price_with_card.zero?
 	  # Amount in cents
 	  	@amount = (total_price_w_card(@cart) *100).to_i
 
@@ -21,7 +21,8 @@ class ChargesController < ApplicationController
 		   :description => 'Course Registration',
 		   :currency    => 'gbp'
 		 )
-		
+		end
+
 		@cart.line_items.each do |item|
 			current_user.enrollments.create(session_id: item.session.id)
 		end

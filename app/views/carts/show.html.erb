@@ -43,13 +43,17 @@
 				<table class = 'btn-table'>
 				<tr>
 					<td>
-						<%= form_tag charges_path do %>
-							<script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-			                data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-			                data-description="Course Enrollment (<%= number_to_currency @cart.total_price_with_card, :unit => '£ ' %>)"
-			                data-currency="gbp"
-			                data-amount="<%= (@cart.total_price_with_card * 100).to_i %>"></script>
-			      		<% end %>
+						<% if @cart.total_price.zero? %>
+								<%= button_to 'Register', charges_path, :method => :post, :class => 'btn btn-success' %>
+							<% else %>
+								<%= form_tag charges_path do %>
+								<script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+				                data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+				                data-description="Course Enrollment (<%= number_to_currency @cart.total_price_with_card, :unit => '£ ' %>)"
+				                data-currency="gbp"
+				                data-amount="<%= (@cart.total_price_with_card * 100).to_i %>"></script>
+				      			<% end %>
+				      		<% end %>
 		      		</td>
 			      	<td>
 			      		<%= button_to 'Request Invoice', invoice_request_path, :method => :get, :class => 'btn btn-warning', :disabled => @cart.total_price == 0 %>

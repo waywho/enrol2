@@ -23,7 +23,7 @@ ActiveAdmin.register Session do
 
 	show do
 		attributes_table do
-			row "Date", :start
+			row :start
 			row :location
 			row :instructor
 			row 'Users' do

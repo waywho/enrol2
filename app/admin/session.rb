@@ -48,8 +48,18 @@ ActiveAdmin.register Session do
 			end
 
 		end
-
 	end
+
+	member_action :clone, method: :get do
+		@resource = resource.dup
+		render :new, layout: false
+	end
+
+	action_item :only => :show do
+		link_to("Make a Copy", clone_admin_session_path(id: session.id))
+	end
+
+
 
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters

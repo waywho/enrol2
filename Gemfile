@@ -42,6 +42,8 @@ gem 'stripe'
 
 gem 'figaro'
 
+gem 'just-datetime-picker'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

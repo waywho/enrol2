@@ -1,6 +1,6 @@
 class ChargesController < ApplicationController
 	include CurrentCart
-	before_action :set_cart
+	before_action :find_cart
 
 	def new
 	end

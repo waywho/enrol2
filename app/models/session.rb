@@ -4,6 +4,8 @@ class Session < ActiveRecord::Base
 	has_many :enrollments
 	has_many :line_items
 	before_destroy :ensure_not_referenced_by_any_line_item
+	just_define_datetime_picker :start
+	just_define_datetime_picker :end
 
 	def free?
 		cost.nil? || cost.zero?

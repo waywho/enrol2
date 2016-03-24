@@ -1,5 +1,6 @@
 class LineItemsController < InheritedResources::Base
 	include CurrentCart
+	before_action :find_cart, only: [:create, :destroy]
 	before_action :set_cart, only: [:create, :destroy]
 	before_action :set_line_item, only: [:show, :edit, :update, :destroy]
 

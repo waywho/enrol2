@@ -1,4 +1,5 @@
 ActiveAdmin.register Session do
+
 	index do
 		selectable_column
 		id_column
@@ -17,6 +18,20 @@ ActiveAdmin.register Session do
 		column :cost
 		column 'Number' do |session|
 			session.enrollments.size
+		end
+		actions
+	end
+
+	form do |f|
+		f.inputs do
+		f.input :course_id, as: :select, :collection => Course.all
+		f.input :instructor
+		f.input :location
+		f.input :address
+		f.input :postal_code
+		f.input :cost
+		f.input :start, as: :just_datetime_picker
+		f.input :end, as: :just_datetime_picker
 		end
 		actions
 	end
@@ -49,6 +64,6 @@ ActiveAdmin.register Session do
 #   permitted
 # end
 
-permit_params :start, :to, :instructor, :course_id, :location, :address, :postal_code, :latitude, :longitude, :cost
+permit_params :start, :end, :start_date, :start_time_hour, :start_time_minute, :end_date, :end_time_hour, :end_time_minute, :instructor, :course_id, :location, :address, :postal_code, :latitude, :longitude, :cost
 
 end

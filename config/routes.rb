@@ -24,7 +24,7 @@ Rails.application.routes.draw do
 
   resources :charges
 
-  get 'invoice_request', :to => 'charges#send_invoice'
+  get 'invoice_request', :to => 'charges#send_invoice', as: :invoice_request
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

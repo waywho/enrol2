@@ -1,6 +1,6 @@
 class StaticPagesController < ApplicationController
 	include CurrentCart
-	before_action :set_cart, except: :thank_you
+	before_action :find_cart, except: [:thank_you, :thank_you_invoice]
 
 	def index
 

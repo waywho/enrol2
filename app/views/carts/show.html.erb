@@ -29,7 +29,7 @@
 			  			<% if @cart.total_price == 0 %>
 			  			£ 0.00
 			  			<% else %>
-			  			<%= number_to_currency (@cart.total_price * 0.019 + 0.2), :unit => '£ ' %>
+			  			<%= number_to_currency ((@cart.total_price + 0.2) / (1 - 0.014)), :unit => '£ ' %>
 			  			<% end %>)</i>
 					</td>
 				</tr>

@@ -6,7 +6,7 @@ class LineItem < ActiveRecord::Base
   	if session.free?
   		return 0
   	else
-  		session.cost
+  		session.cost.to_f
   	end
   end
 

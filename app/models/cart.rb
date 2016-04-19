@@ -11,7 +11,7 @@ class Cart < ActiveRecord::Base
 		if line_items.to_a.sum(&:get_cost) == 0
 			line_items.to_a.sum(&:get_cost)
 		else
-			line_items.to_a.sum(&:get_cost) * 1.019 + 0.2
+			(line_items.to_a.sum(&:get_cost) + 0.2) / (1 - 0.014)
 		end
 	end
 

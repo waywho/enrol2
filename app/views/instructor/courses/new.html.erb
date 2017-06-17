@@ -1,0 +1,12 @@
+<div class = 'col-xs-12 col-md-offset-1 col-md-10'>
+	<h1>Add A New Course</h1>
+	<br />
+	<%= simple_form_for @course, url: instructor_courses_path do |f| %>
+		<%= f.input :title %>
+		<%= f.input :description %>
+		<%= f.input :cost %>
+		<br />
+		<%= f.submit "Create", class: 'btn btn-primary' %>
+		<br />
+	<% end %>	
+</div>

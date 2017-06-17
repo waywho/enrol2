@@ -1,0 +1,10 @@
+<table class="class">
+  <tr>
+    <th>First Name</th>
+    <th>Last Name</th>
+  </tr>
+  <% @session.enrollments.each do |enrollment| %>
+  <tr><%= enrollment.user.first_name %></tr>
+  <tr><%= enrollment.user.last_name %></tr>
+  <% end %>
+</table>

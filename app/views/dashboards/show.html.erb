@@ -4,6 +4,22 @@
 	Email:	<%= current_user.email %>
 	<br />
 
+  <h2>My Coruses:</h2>
+  <table class='table'>
+  <tr>
+    <th>Title</th>
+    <th></th>
+    <th></th>
+  </tr>
+  <% @courses.each do |course| %>
+  <tr>
+    <td><%= course.title %></td>
+    <td><%= link_to 'show', instructor_course_path(course) %></td>
+    <td><%= link_to 'edit', edit_instructor_course_path(course) %></td>
+  </tr>  
+  <% end %>
+  </table>
+
 	<h2>Enrolled Sessions:</h2>
 	<br />
 	<% current_user.sessions.each do |session| %>

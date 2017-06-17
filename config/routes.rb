@@ -10,6 +10,11 @@ Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   
+  namespace :instructor do
+    resources :courses, only: [:new, :create, :show, :edit]
+    resources :sessions, only: [:new, :create, :show]
+  end
+
   resources :courses
 
   get 'about', :to => 'static_pages#about'
